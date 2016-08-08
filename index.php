@@ -12,8 +12,9 @@ session_start();
 
 
   <?php
-
+   //App Id From Facebook Developer Dashboard
      $app_id = '1130565950343621';
+   //Account kit srcret
      $kit_secret = 'f5bb1169137f12379f744e344707de10';
 
       function url($url)
@@ -27,6 +28,7 @@ session_start();
   }
 
   if (isset($_SESSION["access_token"])){
+    //App Sceret Proof
         $appsecret_proof = hash_hmac('sha256', $_SESSION["access_token"] , $kit_secret);
         $url = url('https://graph.accountkit.com/v1.0/me/?appsecret_proof='.$appsecret_proof.'&access_token='.$_SESSION["access_token"]);
         $rual = json_decode($url);
@@ -81,6 +83,7 @@ session_start();
   AccountKit_OnInteractive = function(){
     AccountKit.init(
       {
+        //App Id From Facebook Developer Dashboard
         appId:1130565950343621,
         state:"abcd",
         version:"v1.0"
